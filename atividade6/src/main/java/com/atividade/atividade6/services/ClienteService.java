@@ -7,12 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.logging.Logger;
 
 @Service
 public class ClienteService {
 
-    private static final Logger log = Logger.getLogger(ClienteService.class);
+    private static final Logger log = Logger.getLogger(ClienteService.class.getName());
     @Autowired
     private ClienteRepository clienteRepository;
 
@@ -24,7 +25,7 @@ public class ClienteService {
         return clienteRepository.findAll();
     }
 
-    public List<ClienteModel> listarClientesPorId(Long id) {
+    public Optional<ClienteModel> listarClientesPorId(Long id) {
         return clienteRepository.findById(id);
     }
 

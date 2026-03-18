@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "/clientes")
@@ -24,17 +25,17 @@ public class ClienteController {
         return clienteService.listarClientes();
     }
 
-    @GetMapping
-    public List<ClienteModel> listarClientesPorId(Long id) {
+    @GetMapping("/{id}")
+    public Optional<ClienteModel> listarClientesPorId(Long id) {
         return clienteService.listarClientesPorId(id);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     public void deletarCliente(@PathVariable Long id) {
         clienteService.deletarCliente(id);
     }
 
-    @PutMapping
+    @PutMapping("/{id}")
     public ClienteModel atualizarCliente(@PathVariable Long id, @RequestBody ClienteModel clienteModel) {
         return clienteService.atualizarCliente(id, clienteModel);
     }
